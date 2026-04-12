@@ -1,0 +1,41 @@
+# ───────────────────────────────────────────────────────────────────────────────
+# XcodeGen project specification for RenderKit
+# ───────────────────────────────────────────────────────────────────────────────
+# Optional: If you prefer working in Xcode instead of `swift run`, install
+# XcodeGen (`brew install xcodegen`) and run `xcodegen generate`.
+# This creates RenderKit.xcodeproj which you can open in Xcode.
+# ───────────────────────────────────────────────────────────────────────────────
+
+name: RenderKit
+
+options:
+  bundleIdPrefix: com.renderkit
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+targets:
+  RenderKit:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/RenderKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.renderkit.app
+        PRODUCT_NAME: RenderKit
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        SWIFT_VERSION: "5.9"
+        INFOPLIST_KEY_CFBundleDisplayName: RenderKit
+        INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.developer-tools"
+        # Allow network access for dev servers
+        INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsLocalNetworking: true
+        # Disable App Sandbox for full file system access
+        CODE_SIGN_ENTITLEMENTS: ""
+        ENABLE_APP_SANDBOX: NO
+    entitlements:
+      properties:
+        com.apple.security.app-sandbox: false
+        com.apple.security.files.user-selected.read-write: true
+        com.apple.security.network.client: true
