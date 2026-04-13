@@ -1,0 +1,38 @@
+title = "Gitleaks Configuration"
+
+# Extend the default gitleaks rules
+[extend]
+useDefault = true
+
+# Paths to ignore during scanning
+[allowlist]
+  description = "Global allowlist"
+
+  # Common false positive paths
+  paths = [
+    '''(^|/)vendor/''',
+    '''(^|/)node_modules/''',
+    '''(^|/)\.yarn/''',
+    '''(^|/)package-lock\.json$''',
+    '''(^|/)yarn\.lock$''',
+    '''(^|/)pnpm-lock\.yaml$''',
+    '''(^|/)go\.sum$''',
+    '''(^|/)Cargo\.lock$''',
+    '''\.min\.js$''',
+    '''\.min\.css$''',
+    '''\.map$''',
+    '''\.svg$''',
+    '''\.png$''',
+    '''\.jpg$''',
+    '''\.jpeg$''',
+    '''\.gif$''',
+    '''\.ico$''',
+    '''\.woff2?$''',
+    '''\.ttf$''',
+    '''\.eot$''',
+    '''\.pdf$''',
+    '''\.stl$''',
+    '''\.step$''',
+    '''\.3mf$''',
+    '''\.f3d$''',
+  ]
